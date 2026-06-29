@@ -1,0 +1,7 @@
+- id: cachelint
+  name: cachelint (Docker build-cache analyzer)
+  description: Predict Docker build-cache invalidation and suggest a faster layer order.
+  entry: cachelint
+  language: python
+  files: (^|/)Dockerfile($|\.)|\.Dockerfile$
+  types: [text]

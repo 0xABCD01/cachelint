@@ -1,0 +1,34 @@
+name: Bug report
+description: cachelint reported something wrong, missed something, or crashed
+labels: ["bug"]
+body:
+  - type: textarea
+    id: dockerfile
+    attributes:
+      label: Dockerfile (minimal)
+      description: The smallest Dockerfile that reproduces the problem.
+      render: dockerfile
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and output
+      description: The exact `cachelint ...` command you ran and what it printed.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: 'e.g. "CL001 should not fire here; this is the correct manifest-first order."'
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: cachelint version
+      description: Output of `cachelint --version`.
+    validations:
+      required: true
