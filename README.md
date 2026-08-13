@@ -6,6 +6,7 @@
 
 [![CI](https://github.com/0xABCD01/cachelint/actions/workflows/ci.yml/badge.svg)](https://github.com/0xABCD01/cachelint/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/cachelint.svg)](https://pypi.org/project/cachelint/)
+[![Container](https://ghcr-badge.egpl.dev/0xabcd01/cachelint/tags?label=ghcr)](https://github.com/0xABCD01/cachelint/pkgs/container/cachelint)
 [![Python versions](https://img.shields.io/pypi/pyversions/cachelint.svg)](https://pypi.org/project/cachelint/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 <br>
@@ -103,6 +104,20 @@ pip install cachelint
 
 `cachelint` adds no other packages. It is pure standard library.
 
+### Container image
+
+A multi-arch (`linux/amd64`, `linux/arm64`) image is published to GHCR on every
+release tag:
+
+```bash
+docker run --rm -v "$PWD":/work ghcr.io/0xabcd01/cachelint:v0.1.0 Dockerfile
+# or pin by digest for locked-down environments:
+#   ghcr.io/0xabcd01/cachelint@sha256:...
+```
+
+The image runs as a non-root user. Mount your checkout at `/work` and pass the
+Dockerfile path (relative to `/work`) as the argument.
+
 ## 🚀 Usage
 
 ```bash
@@ -125,6 +140,14 @@ Exit codes: `0` clean, `1` findings at or above `--fail-on` (default `high`),
 # .github/workflows/docker.yml
 - run: pipx install cachelint
 - run: cachelint Dockerfile          # fails the job on a HIGH finding
+```
+
+Or use the container image directly (no Python install):
+
+```yaml
+- uses: docker://ghcr.io/0xabcd01/cachelint:v0.1.0
+  with:
+    args: Dockerfile --fail-on high
 ```
 
 Upload findings to the GitHub Security tab:
