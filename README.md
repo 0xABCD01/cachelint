@@ -5,8 +5,8 @@
 ### Predict Docker build-cache invalidation before it slows your CI, and get the fix.
 
 [![CI](https://github.com/0xABCD01/cachelint/actions/workflows/ci.yml/badge.svg)](https://github.com/0xABCD01/cachelint/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/cachelint.svg)](https://pypi.org/project/cachelint/)
-[![Python versions](https://img.shields.io/pypi/pyversions/cachelint.svg)](https://pypi.org/project/cachelint/)
+[![Release](https://img.shields.io/github/v/release/0xABCD01/cachelint?label=release)](https://github.com/0xABCD01/cachelint/releases)
+[![Python](https://img.shields.io/badge/python-3.8%2B-3776ab)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 <br>
 [![Rules](https://img.shields.io/badge/cache_rules-10-orange.svg)](#-rules)
@@ -96,12 +96,14 @@ you.
 ## 📦 Install
 
 ```bash
-pipx install cachelint     # recommended (isolated)
+pipx install "cachelint @ git+https://github.com/0xABCD01/cachelint.git"   # recommended (isolated)
 # or
-pip install cachelint
+pip install "cachelint @ git+https://github.com/0xABCD01/cachelint.git"
 ```
 
 `cachelint` adds no other packages. It is pure standard library.
+
+The release workflow publishes to PyPI on a version tag. The first trusted-publisher publish needs a one-time setup on the PyPI project page, so until that lands the install path above is the supported one.
 
 ## 🚀 Usage
 
